@@ -1,14 +1,17 @@
 #pragma once
+#include <iostream>
+#include <string>
+
 enum class userRole{EDITOR,WORKER};
 class User
 {
 public:
 	User::User();
-	int User::getUsername() {};
-	void User::setUsername(string username) {};
+	int getUsername();
+	void setUsername(std::string username);
 
 private:
-	int ID;
-	string username;
+	long long ID;
+	std::string username;
 };
 
