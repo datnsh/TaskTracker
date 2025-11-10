@@ -1,13 +1,17 @@
 #pragma once
-#include <QString>
+#include <iostream>
+#include<string>
 
 enum class TaskPriority{LOW,HIGH,MEDIUM};
 enum class TaskStatus{NOTSTARTED,INPROGRESS,PAUSE};
-struct Task
+class Task 
 {
-	std::int64_t taskId;
-	QString taskName;
-	std::int64_t taskDuration;
-	TaskPriority taskPriority;
-	TaskStatus taskStatus;
+public:
+	void setID(long long id);
+	long long getID();
+	void setName(std::string name);
+private:
+	long long id;
+	std::string name;
+	long long duration;
 };

@@ -1,12 +1,17 @@
 #pragma once
 #include <iostream>
-#include <QString>
-#include <cstdint>
+#include <string>
 
-enum class UserRole{EDITOR,WORKER};
-struct User {
-	std::int64_t userId;
-	QString username;
-	UserRole userRole;
+enum class userRole{EDITOR,WORKER};
+class User
+{
+public:
+	User::User();
+	int getUsername();
+	void setUsername(std::string username);
+
+private:
+	long long ID;
+	std::string username;
 };
 
