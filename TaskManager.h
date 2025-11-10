@@ -3,7 +3,9 @@
 #include <QAbstractListModel>
 #include <iostream>
 
-class TaskManager : public QAbstractListModel {
-	Q_OBJECT
-	PUBLIC 
+class TaskManager{
+public:
+//Todo: Manages list of tasks, Create Task, Remove Task, Filter Task,
+	TaskManager();
+private:
 };
