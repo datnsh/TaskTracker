@@ -6,15 +6,16 @@
 enum class UserRole{ADMIN,EDITOR,WORKER};
 class User {
 public:
+	User();
 	/*Getter Setter*/
-	void setUserId();
-	std::int64_t getUserId();
+	void setUserId(const int64_t& userId);
+	const std::int64_t& getUserId();
 	
-	void setUsername();
-	QString getUsername();
+	void setUsername(const QString& username);
+	const QString& getUsername();
 
-	void setUserRole();
-	UserRole getUserRole();
+	void setUserRole(const UserRole& userRole);
+	const UserRole& getUserRole();
 	/*-------------*/
 private:
 	std::int64_t userId;

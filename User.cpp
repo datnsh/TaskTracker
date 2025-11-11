@@ -1,28 +1,31 @@
 #include "User.h"
 
-void User::setUserId()
+void User::setUserId(const int64_t& userId)
 {
+	this->userId = userId;
 }
 
-std::int64_t User::getUserId()
+const std::int64_t& User::getUserId()
 {
-	return std::int64_t();
+	return userId;
 }
 
-void User::setUsername()
+void User::setUsername(const QString& username)
 {
+	this->username = username;
 }
 
-QString User::getUsername()
+const QString& User::getUsername()
 {
-	return QString();
+	return username;
 }
 
-void User::setUserRole()
+void User::setUserRole(const UserRole& userRole)
 {
+	this->userRole = userRole;
 }
 
-UserRole User::getUserRole()
+const UserRole& User::getUserRole()
 {
-	return UserRole();
+	return userRole;
 }

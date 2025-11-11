@@ -1,46 +1,21 @@
 #include "Task.h"
 
-void Task::setTaskId(std::int64_t taskId)
+void Task::setTaskId(const std::int64_t& taskId)
 {
+	this->taskId = taskId;
 }
 
-std::int64_t Task::getTaskId()
+void Task::setTaskName(const QString& taskName)
 {
-	return std::int64_t();
+	this->taskName = taskName;
 }
 
-void Task::setTaskName(QString taskName)
+void Task::setTaskDuration(const std::int64_t& taskDuration)
 {
+	this->taskDuration = taskDuration;
 }
 
-QString Task::getTaskName()
+void Task::setTaskPriority(const TaskPriority& taskPriority) 
 {
-	return QString();
-}
-
-void Task::setTaskDuration(std::int64_t taskDuration)
-{
-}
-
-std::int64_t Task::getTaskDuration()
-{
-	return std::int64_t();
-}
-
-void Task::setTaskPriority(TaskPriority taskPriority)
-{
-}
-
-TaskPriority Task::getTaskPriority()
-{
-	return TaskPriority();
-}
-
-void Task::setTaskStatus(TaskStatus taskStatus)
-{
-}
-
-TaskStatus Task::getTaskStatus()
-{
-	return TaskStatus();
+	this->taskPriority = taskPrioriy;
 }

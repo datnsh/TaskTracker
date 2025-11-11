@@ -5,21 +5,22 @@ enum class TaskPriority{LOW,HIGH,MEDIUM};
 enum class TaskStatus{NOTSTARTED,INPROGRESS,PAUSE};
 class Task {
 public:
-	Task(std::int64_t taskId, QString taskName, std::int64_t taskDuration, TaskPriority taskPriority,);
+	Task(std::int64_t taskId, QString taskName, std::int64_t taskDuration, TaskPriority taskPriority, TaskStatus taskStatus);
+	
 	/*Getter Setter*/
-	void setTaskId(std::int64_t taskId);
+	void setTaskId(const std::int64_t& taskId);
 	std::int64_t getTaskId();
 	
-	void setTaskName(QString taskName);
+	void setTaskName(const QString& taskName);
 	QString getTaskName();
 
-	void setTaskDuration(std::int64_t taskDuration);
+	void setTaskDuration(const std::int64_t& taskDuration);
 	std::int64_t getTaskDuration();
 
-	void setTaskPriority(TaskPriority taskPriority);
+	void setTaskPriority(const TaskPriority& taskPriority);
 	TaskPriority getTaskPriority();
 	
-	void setTaskStatus(TaskStatus taskStatus);
+	void setTaskStatus(const TaskStatus& taskStatus);
 	TaskStatus getTaskStatus();
 
 	/*-------------*/
