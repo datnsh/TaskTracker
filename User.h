@@ -6,7 +6,7 @@
 enum class UserRole{ADMIN,EDITOR,WORKER};
 class User {
 public:
-	User();
+	User(std::int64_t id,QString username, QString password, UserRole userRole);
 	/*Getter Setter*/
 	void setUserId(const int64_t& userId);
 	const std::int64_t& getUserId();
@@ -21,5 +21,6 @@ private:
 	std::int64_t id;
 	QString username;
 	UserRole userRole;
+	QString password;
 };
 

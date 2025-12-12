@@ -1,8 +1,11 @@
 #include "User.h"
 
-User::User()
+User::User(std::int64_t id, QString username,QString password,UserRole userRole)
 {
-
+	this->id = id;
+	this->username = username;
+	this->password = password;
+	this->userRole = userRole;
 }
 
 void User::setUserId(const int64_t& userId)
