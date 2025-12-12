@@ -18,7 +18,7 @@ public:
 	const UserRole& getUserRole();
 	/*-------------*/
 private:
-	std::int64_t userId;
+	std::int64_t id;
 	QString username;
 	UserRole userRole;
 };
