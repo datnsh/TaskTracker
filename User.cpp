@@ -1,13 +1,18 @@
 #include "User.h"
 
+User::User()
+{
+
+}
+
 void User::setUserId(const int64_t& userId)
 {
-	this->userId = userId;
+	this->id = userId;
 }
 
 const std::int64_t& User::getUserId()
 {
-	return userId;
+	return id;
 }
 
 void User::setUsername(const QString& username)
