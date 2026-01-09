@@ -1,34 +1,40 @@
 #pragma once
-#include <QString>
-
+#include <iostream>
+using namespace std;
 enum class TaskPriority{LOW,HIGH,MEDIUM};
 enum class TaskStatus{NOTSTARTED,INPROGRESS,PAUSE};
+enum class TaskProperty{ID, NAME, DESCRIPTION, DURATION,PRIORITY, STATUS};
+
 class Task {
-public:
-	Task(std::int64_t taskId, QString taskName, std::int64_t taskDuration, TaskPriority taskPriority, TaskStatus taskStatus);
-	
-	/*Getter Setter*/
-	void setTaskId(const std::int64_t& taskId);
-	std::int64_t getTaskId();
-	
-	void setTaskName(const QString& taskName);
-	QString getTaskName();
-
-	void setTaskDuration(const std::int64_t& taskDuration);
-	std::int64_t getTaskDuration();
-
-	void setTaskPriority(const TaskPriority& taskPriority);
-	TaskPriority getTaskPriority();
-	
-	void setTaskStatus(const TaskStatus& taskStatus);
-	TaskStatus getTaskStatus();
-
-	/*-------------*/
 
 private:
 	std::int64_t taskId;
-	QString taskName;
+	std::string taskName;
+	std::string description;
 	std::int64_t taskDuration;
 	TaskPriority taskPriority;
 	TaskStatus taskStatus;
+public:
+	/*Getter Setter*/
+	void SetTaskId(const std::int64_t& taskId);
+	std::int64_t GetTaskId();
+	
+	void SetTaskName(const std::string& taskName);
+	std::string GetTaskName();
+
+	void SetTaskDescription(const std::string& description);
+	std::string GetTaskDescription();
+
+	void SetTaskDuration(const std::int64_t& taskDuration);
+	std::int64_t GetTaskDuration();
+
+	void SetTaskPriority(const TaskPriority& taskPriority);
+	TaskPriority GetTaskPriority();
+	
+	void SetTaskStatus(const TaskStatus& taskStatus);
+	TaskStatus GetTaskStatus();
+
+	/*-------------*/
+
+
 };

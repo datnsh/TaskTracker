@@ -1,15 +1,13 @@
 #pragma once
-#include <iostream>
 #include <QString>
-#include <cstdint>
+#include <iostream>
+using namespace std;
 
 enum class UserRole{ADMIN,EDITOR,WORKER};
 class User {
 public:
-	User(std::int64_t id,QString username, QString password, UserRole userRole);
-	/*Getter Setter*/
 	void setUserId(const int64_t& userId);
-	const std::int64_t& getUserId();
+	const std::int64_t getUserId();
 	
 	void setUsername(const QString& username);
 	const QString& getUsername();

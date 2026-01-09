@@ -1,21 +1,58 @@
+#include <QString>
 #include "Task.h"
 
-void Task::setTaskId(const std::int64_t& taskId)
+std::int64_t Task::GetTaskId() {
+	return taskId;
+}
+
+void Task::SetTaskId(const std::int64_t& taskId)
 {
 	this->taskId = taskId;
 }
 
-void Task::setTaskName(const QString& taskName)
+void Task::SetTaskName(const std::string& taskName)
 {
 	this->taskName = taskName;
 }
 
-void Task::setTaskDuration(const std::int64_t& taskDuration)
+std::string Task::GetTaskName() {
+	return taskName;
+}
+
+void Task::SetTaskDescription(const std::string& description)
+{
+	this->description = description;
+}
+
+std::string Task::GetTaskDescription()
+{
+	return description;
+}
+
+void Task::SetTaskDuration(const std::int64_t& taskDuration)
 {
 	this->taskDuration = taskDuration;
 }
 
-void Task::setTaskPriority(const TaskPriority& taskPriority) 
+std::int64_t Task::GetTaskDuration()
 {
-	this->taskPriority = taskPrioriy;
+	return taskDuration;
 }
+
+void Task::SetTaskPriority(const TaskPriority& taskPriority) 
+{
+	this->taskPriority = taskPriority;
+}
+
+TaskPriority Task::GetTaskPriority() {
+	return taskPriority;
+}
+
+TaskStatus Task::GetTaskStatus() {
+	return taskStatus;
+}
+
+void Task::SetTaskStatus(const TaskStatus& taskStatus) {
+	this->taskStatus = taskStatus;
+}
+
