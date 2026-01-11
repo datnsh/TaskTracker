@@ -13,6 +13,7 @@ std::int64_t TaskManager::GetAvailableId()
 
 void TaskManager::AddTask(Task& newTask)
 {
+
 	
 	
 }

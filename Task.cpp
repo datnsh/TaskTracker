@@ -1,4 +1,3 @@
-#include <QString>
 #include "Task.h"
 
 std::int64_t Task::GetTaskId() {
