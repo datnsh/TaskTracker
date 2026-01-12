@@ -7,7 +7,8 @@ class TaskManager{
 public:
 //Todo: Manages list of tasks, Create Task, Remove Task, Filter Task,
 	TaskManager();
-	void Update();
+	template <typename T>
+	void Update(std::int64_t& taskId, TaskProperty& property, T newValue);
 	void DeleteTask();
 	void AddTask(Task& newTask);
 	vector<Task> GetTaskList();

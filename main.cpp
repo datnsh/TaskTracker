@@ -1,7 +1,11 @@
-#include "TaskManager.h"
+#include "Controller.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
+// 
 int main(int argc, char *argv[]) {
-	
-	return;
+	Controller c;
+	c.runApp();
+	return 0;
 }

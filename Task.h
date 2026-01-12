@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 enum class TaskPriority{LOW,HIGH,MEDIUM};
-enum class TaskStatus{NOTSTARTED,INPROGRESS,PAUSE};
+enum class TaskStatus{NOT_STARTED,IN_PROGRESS,PAUSE};
 enum class TaskProperty{ID, NAME, DESCRIPTION, DURATION,PRIORITY, STATUS};
 
 class Task {
