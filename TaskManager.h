@@ -1,21 +1,41 @@
 #pragma once
 #include "Task.h"
 #include <iostream>
-#include <vector>
+#include <map>
+
+using namespace std;
 
 class TaskManager{
 public:
 //Todo: Manages list of tasks, Create Task, Remove Task, Filter Task,
-	TaskManager();
+	static TaskManager& GetInstance() 
+	{
+		static TaskManager instance;
+		return instance;
+	};
+
+	TaskManager(const TaskManager&) = delete;
+
+	TaskManager& operator=(const TaskManager&) = delete;
+	
 	template <typename T>
-	void Update(std::int64_t& taskId, TaskProperty& property, T newValue);
-	void DeleteTask();
+	bool Update(int64_t& taskId, TaskProperty& property, T newValue);
+	
+	void DeleteTask(int64_t& taskId);
+
 	void AddTask(Task& newTask);
-	vector<Task> GetTaskList();
-	void SetTaskList();
-	std::int64_t GetAvailableId();
-	void SetAvailableId();
+
+	void createNewTask();
+
+	map<int64_t,Task> GetTaskList();
+	void SetTaskList(map<int64_t,Task>& taskList);
+
+	int64_t GetAvailableId();
+	void SetAvailableId(int64_t& availableId);
+
 private:
-	vector<Task> taskList;
-	std::int64_t availableId;
+	map<int64_t, Task> taskList;
+	int64_t availableId;
+
+	TaskManager();
 };
