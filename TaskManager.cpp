@@ -1,7 +1,5 @@
 #include "TaskManager.h"
 
-
-
 TaskManager::TaskManager()
 {
 	map<int64_t,Task> taskList;
@@ -13,10 +11,12 @@ int64_t TaskManager::GetAvailableId()
 	return this->availableId;
 }
 
-void TaskManager::createNewTask() {
+Task TaskManager::CreateNewTask(string& description) {
 	Task newTask = Task();
 	int64_t taskId = GetAvailableId();
 	newTask.SetTaskId(taskId);
+	newTask.SetTaskDescription(description);
+	return newTask;
 }
 
 void TaskManager::AddTask(Task& newTask)
@@ -39,16 +39,12 @@ bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, T newValu
 	}
 	switch (property)
 	{
-	case TaskProperty::NAME:
-		task->SetTaskName(&newValue);
 	case TaskProperty::STATUS:
 		task->SetTaskStatus(&newValue);
 	case TaskProperty::PRIORITY:
 		task->SetTaskPriority(&newValue);
 	case TaskProperty::DESCRIPTION:
 		task->SetTaskDescription(&newValue);
-	case TaskProperty::DURATION:
-		task->SetTaskDuration(&newValue);
 	case TaskProperty::ID:
 		task->SetTaskId(&newValue);
 	default:

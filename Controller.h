@@ -2,8 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <TaskManager.h>
-
-using namespace std;
+#include <unordered_map>
+#include <functional>
 class Controller {
 public:
 	
@@ -16,7 +16,9 @@ public:
 
 	Controller(const Controller&) = delete;
 	void processInput(string& userInput);
+	void toLower(string& s);
 private:
-	static Controller instance;
 	Controller();
+	TaskManager& taskManager;
+	static unordered_map<std::string, std::function<void()>> commands;
 };

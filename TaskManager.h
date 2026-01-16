@@ -25,7 +25,7 @@ public:
 
 	void AddTask(Task& newTask);
 
-	void createNewTask();
+	Task CreateNewTask(string& description);
 
 	map<int64_t,Task> GetTaskList();
 	void SetTaskList(map<int64_t,Task>& taskList);
@@ -36,6 +36,5 @@ public:
 private:
 	map<int64_t, Task> taskList;
 	int64_t availableId;
-
 	TaskManager();
 };
