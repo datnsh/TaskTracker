@@ -16,6 +16,7 @@ Task TaskManager::CreateNewTask(string& description) {
 	int64_t taskId = GetAvailableId();
 	newTask.SetTaskId(taskId);
 	newTask.SetTaskDescription(description);
+	newTask.SetTaskStatus(TaskStatus::TO_DO);
 	return newTask;
 }
 
@@ -41,8 +42,8 @@ bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, T newValu
 	{
 	case TaskProperty::STATUS:
 		task->SetTaskStatus(&newValue);
-	case TaskProperty::PRIORITY:
-		task->SetTaskPriority(&newValue);
+	/*case TaskProperty::PRIORITY:
+		task->SetTaskPriority(&newValue);*/
 	case TaskProperty::DESCRIPTION:
 		task->SetTaskDescription(&newValue);
 	case TaskProperty::ID:
@@ -80,6 +81,15 @@ void TaskManager::SetTaskList(map<int64_t,Task>& taskList)
 void TaskManager::SetAvailableId(std::int64_t& availableId)
 {
 	this->availableId = availableId;
+}
+
+string TaskManager::GetDateTime() {
+	auto now = std::chrono::system_clock::now();
+	auto local = std::chrono::zoned_time{
+		std::chrono::current_zone(), now
+	};
+	std::string date = std::format("{:%d-%m-%Y %H:%M:%S}\n", local);
+	return date;
 }
 
 

@@ -2,6 +2,8 @@
 #include "Task.h"
 #include <iostream>
 #include <map>
+#include <chrono>
+#include <format>
 
 using namespace std;
 
@@ -32,6 +34,8 @@ public:
 
 	int64_t GetAvailableId();
 	void SetAvailableId(int64_t& availableId);
+
+	string GetDateTime();
 
 private:
 	map<int64_t, Task> taskList;

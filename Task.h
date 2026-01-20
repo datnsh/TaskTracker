@@ -1,34 +1,40 @@
 #pragma once
 #include <iostream>
-using namespace std;
 enum class TaskPriority{LOW,HIGH,MEDIUM};
-enum class TaskStatus{NOT_STARTED,IN_PROGRESS,PAUSE};
+enum class TaskStatus{TO_DO,IN_PROGRESS,DONE};
 enum class TaskProperty{ID,DESCRIPTION,PRIORITY,STATUS};
 
 class Task {
 
 private:
-	int64_t taskId;
-	string description;
-	TaskPriority taskPriority;
+	std::int64_t taskId;
+	std::string description;
+	/*TaskPriority taskPriority;*/
 	TaskStatus taskStatus;
+	std::string createdDate;
+	std::string updatedDate;
 public:
 	/*Getter Setter*/
-	void SetTaskId(const int64_t& taskId);
-	int64_t GetTaskId();
-	
-	void SetTaskName(const string& taskName);
-	string GetTaskName();
+	Task();
+	void SetTaskId(const std::int64_t& taskId);
+	const std::int64_t GetTaskId();
 
-	void SetTaskDescription(const string& description);
-	string GetTaskDescription();
+	void SetTaskDescription(const std::string& description);
+	const std::string GetTaskDescription();
 
 
-	void SetTaskPriority(const TaskPriority& taskPriority);
-	TaskPriority GetTaskPriority();
+	/*void SetTaskPriority(const TaskPriority& taskPriority);
+	const TaskPriority GetTaskPriority();*/
 	
 	void SetTaskStatus(const TaskStatus& taskStatus);
-	TaskStatus GetTaskStatus();
+	const TaskStatus GetTaskStatus();
+
+	void SetTaskCreatedDate(const std::string& createdDate);
+	const std::string GetTaskCreatedDate();
+
+	void SetTaskUpdatedDate(const std::string& updatedDate);
+	const std::string GetTaskUpdatedDate();
+
 
 	/*-------------*/
 };
