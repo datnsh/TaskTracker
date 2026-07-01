@@ -5,8 +5,9 @@
 
 // 
 int main(int argc, char *argv[]) {
-	Controller& c = Controller::GetInstance();
-	string userInput;
-	c.runApp();
+	TaskManager taskManager;
+	InputParser parser;
+	Controller c(taskManager,parser);
+	c.RunApp();
 	return 0;
 }

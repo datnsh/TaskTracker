@@ -2,43 +2,19 @@
 #include "Task.h"
 #include <iostream>
 #include <map>
-#include <chrono>
 #include <format>
-
-using namespace std;
 
 class TaskManager{
 public:
-//Todo: Manages list of tasks, Create Task, Remove Task, Filter Task,
-	static TaskManager& GetInstance() 
-	{
-		static TaskManager instance;
-		return instance;
-	};
+	TaskManager();
 
-	TaskManager(const TaskManager&) = delete;
-
-	TaskManager& operator=(const TaskManager&) = delete;
-	
-	template <typename T>
+	template<typename T>
 	bool Update(int64_t& taskId, TaskProperty& property, T newValue);
 	
 	void DeleteTask(int64_t& taskId);
 
 	void AddTask(Task& newTask);
 
-	Task CreateNewTask(string& description);
+	void CreateNewTask(std::string& description);
 
-	map<int64_t,Task> GetTaskList();
-	void SetTaskList(map<int64_t,Task>& taskList);
-
-	int64_t GetAvailableId();
-	void SetAvailableId(int64_t& availableId);
-
-	string GetDateTime();
-
-private:
-	map<int64_t, Task> taskList;
-	int64_t availableId;
-	TaskManager();
 };

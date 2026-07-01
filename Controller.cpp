@@ -1,50 +1,37 @@
 #include "Controller.h"
-
-Controller::Controller() : taskManager(TaskManager::GetInstance())
+Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : taskManager(taskManager), m_parser(inputParser)
 {
-	TaskManager& taskManager = TaskManager::GetInstance();
-}
-void Controller::AddTask(queue<string>& inputQueue) {
-	std::string taskDescription;
-	while (!inputQueue.empty()) {
-		taskDescription.append(this->GetNextInput(inputQueue));
-		taskDescription.append(" ");
-	}
-	cout << taskDescription;
-}
-// Update ID "Description"
-void Controller::UpdateTask(string& userInput) {
-	std::string taskId = this->GetNextInput(inputQueue);
-	std::string updateDescription = this->GetNextInput(inputQueue);
-	cout << "Task ID:" << taskId << "update description:" << updateDescription;
-}
-void Controller::RemoveTask(string& userInput){
-	std::string taskId = this->GetNextInput(inputQueue);
-	cout << "Removing task with ID:" << taskId;
 }
 
-void Controller::processInput(string& userInput)
-{
-	std::string command = userInput[0];
-	Helper::StringToLower(command);
+void Controller::Execute(std::string& command) {
 	if (command == "add") {
-		this->AddTask(string& userInput);
+		std::cout << "Add task\n";
 	}
 	else if (command == "update") {
-		this->UpdateTask(string& userInput);
+		std::cout << "Update task\n";
 	}
 	else if (command == "remove") {
-		this->RemoveTask(string& userInput);
+		std::cout << "Remove task\n";
+	}
+	else {
+		std::cout << "Invalid command\n";
 	}
 }
 
-void Controller::runApp() {
-	std::string userInput;
+void Controller::RunApp() {
 	std::cout << "Input 0 to exit program\n";
-	while (userInput != "0") {
+	while (true) {
+		std::string userInput;
 		std::cout << "Enter command:";
-		std::getline(cin, userInput);
-		this->processInput(userInput);
+		std::getline(std::cin, userInput);
+
+		if (userInput == "0") {
+			break;
+		}
+
+		ParsedCommand command = this->m_parser.ParseUserInput(userInput);
+		Execute(command.command);
+		
 		std::cout << "\n";
 	}
 }

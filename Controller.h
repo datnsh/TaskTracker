@@ -2,26 +2,18 @@
 #include <iostream>
 #include <sstream>
 #include <TaskManager.h>
+#include "InputParser.h"
 #include <queue>
 #include <Helper.h>
+#include <QString>
+
 class Controller {
 public:
-	
-	static Controller& GetInstance() {
-		static Controller instance;
-		return instance;
-	};
+	Controller(TaskManager& taskManager, InputParser& inputParser);
 
-	Controller& operator=(const Controller&) = delete;
-
-	Controller(const Controller&) = delete;
-	queue<string> processInput(string& userInput);
-	void processCommand(string& userInput);
-	void AddTask(string& userInput);
-	void UpdateTask(string& userInput);
-	void RemoveTask(string& userInput);
-	void runApp();
+	void Execute(std::string& command);
+	void RunApp();
 private:
-	Controller();
 	TaskManager& taskManager;
+	InputParser& m_parser;
 };

@@ -1,95 +1,26 @@
 #include "TaskManager.h"
 
-TaskManager::TaskManager()
-{
-	map<int64_t,Task> taskList;
-	int64_t availableId = -1;
-}
-
-int64_t TaskManager::GetAvailableId()
-{
-	return this->availableId;
-}
-
-Task TaskManager::CreateNewTask(string& description) {
-	Task newTask = Task();
-	int64_t taskId = GetAvailableId();
-	newTask.SetTaskId(taskId);
-	newTask.SetTaskDescription(description);
-	newTask.SetTaskStatus(TaskStatus::TO_DO);
-	return newTask;
+void TaskManager::CreateNewTask(std::string& description) {
+	std::cout << "Creating new task with description:" << description;
 }
 
 void TaskManager::AddTask(Task& newTask)
 {
-	int64_t taskId = newTask.GetTaskId();
-	if (taskList.count(taskId) == 0) {
-		taskList[taskId] = newTask;
-	}
-	else {
-		cout << "Can't add task, duplicated ID";
-	}
+	std::cout << "Add task with Id:" << newTask.taskId;
 }
 template<typename T>
 bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, T newValue)
 {
-	Task* task = taskList[taskId];
-	if (!task) {
-		cout << "No task with Id:" << taskId;
-		return false;
-	}
-	switch (property)
-	{
-	case TaskProperty::STATUS:
-		task->SetTaskStatus(&newValue);
-	/*case TaskProperty::PRIORITY:
-		task->SetTaskPriority(&newValue);*/
-	case TaskProperty::DESCRIPTION:
-		task->SetTaskDescription(&newValue);
-	case TaskProperty::ID:
-		task->SetTaskId(&newValue);
-	default:
-		cout << "This operation is not allowed";
-		break;
-	}
+	std::cout << "Updating task with Id:" << taskId;
 }
+
+TaskManager::TaskManager(){}
 
 void TaskManager::DeleteTask(int64_t& taskId)
 {
-	cout << "Deleting task with Id:" << taskId;
-	this->taskList.erase(taskId);
-	if (taskList.find(taskId) == taskList.end()) {
-		cout << "Task Deleted";
-	}
-	else {
-		cout << "Something went wrong";
-	}
+	std::cout << "Deleting task with Id:" << taskId;
 
 	//Update the json file
-}
-
-map<int64_t, Task> TaskManager::GetTaskList()
-{
-	return this->taskList;
-}
-
-void TaskManager::SetTaskList(map<int64_t,Task>& taskList)
-{
-	this->taskList = taskList;
-}
-
-void TaskManager::SetAvailableId(std::int64_t& availableId)
-{
-	this->availableId = availableId;
-}
-
-string TaskManager::GetDateTime() {
-	auto now = std::chrono::system_clock::now();
-	auto local = std::chrono::zoned_time{
-		std::chrono::current_zone(), now
-	};
-	std::string date = std::format("{:%d-%m-%Y %H:%M:%S}\n", local);
-	return date;
 }
 
 
