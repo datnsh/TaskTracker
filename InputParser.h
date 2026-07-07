@@ -1,5 +1,6 @@
 #pragma once
 #include <ParsedCommand.h>
+#include "Helper.h"
 class InputParser
 {
 public:

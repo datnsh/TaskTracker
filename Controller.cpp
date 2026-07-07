@@ -1,16 +1,16 @@
 #include "Controller.h"
-Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : taskManager(taskManager), m_parser(inputParser)
+Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : taskManager(taskManager), parser(inputParser)
 {
 }
 
-void Controller::Execute(std::string& command) {
-	if (command == "add") {
-		std::cout << "Add task\n";
+void Controller::Execute(ParsedCommand& command) {
+	if (command.command == "add") {
+		taskManager.AddTask(command.arguments);
 	}
-	else if (command == "update") {
+	else if (command.command == "update") {
 		std::cout << "Update task\n";
 	}
-	else if (command == "remove") {
+	else if (command.command == "remove") {
 		std::cout << "Remove task\n";
 	}
 	else {
@@ -29,8 +29,8 @@ void Controller::RunApp() {
 			break;
 		}
 
-		ParsedCommand command = this->m_parser.ParseUserInput(userInput);
-		Execute(command.command);
+		ParsedCommand command = this->parser.ParseUserInput(userInput);
+		Execute(command);
 		
 		std::cout << "\n";
 	}

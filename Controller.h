@@ -10,10 +10,9 @@
 class Controller {
 public:
 	Controller(TaskManager& taskManager, InputParser& inputParser);
-
-	void Execute(std::string& command);
+	void Execute(ParsedCommand& command);
 	void RunApp();
 private:
 	TaskManager& taskManager;
-	InputParser& m_parser;
+	InputParser& parser;
 };

@@ -9,6 +9,7 @@ ParsedCommand InputParser::ParseUserInput(const std::string& input) {
 	std::istringstream iss(input);
 	std::string token;
 	if (iss >> token) {
+		Helper::StringToLower(token);
 		parsedCommand.command = token;
 		while (iss >> token) {
 			parsedCommand.arguments.push_back(token);

@@ -6,6 +6,7 @@ class Helper
 {
 public:
 	static void StringToLower(std::string& c);
-	std::string GetDateTime();
+	static std::string GetDateTime();
+	static std::string JoinString(const std::vector<std::string>& words);
 };
 

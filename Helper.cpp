@@ -11,3 +11,12 @@ std::string Helper::GetDateTime() {
 	std::string dateTimeStr = std::format("{:%Y-%m-%d %H:%M:%S}", now);
 	return dateTimeStr;
 }
+
+std::string Helper::JoinString(const std::vector<std::string>& words)
+{
+	std::ostringstream oss;
+	for (const auto& word : words) {
+		oss << word << " ";
+	}
+	return oss.str();
+}

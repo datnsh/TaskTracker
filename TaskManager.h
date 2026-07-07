@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <format>
+#include "Helper.h"
 
 class TaskManager{
 public:
@@ -13,8 +14,9 @@ public:
 	
 	void DeleteTask(int64_t& taskId);
 
-	void AddTask(Task& newTask);
-
-	void CreateNewTask(std::string& description);
+	void AddTask(std::vector<std::string>& arguments);
+private:
+	std::map<int64_t, Task> taskList;
+	std::int64_t currentTaskId{};
 
 };
