@@ -3,12 +3,12 @@ Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : tas
 {
 }
 
-void Controller::Execute(ParsedCommand& command) {
-	if (command.command == "add") {
-		taskManager.AddTask(command.arguments);
+void Controller::Execute(ParsedCommand& cmd) {
+	if (cmd.command == "add") {
+		taskManager.AddTask(cmd.arguments);
 	}
-	else if (command.command == "update") {
-		std::cout << "Update task\n";
+	else if (cmd.command == "update") {
+		command.
 	}
 	else if (command.command == "remove") {
 		std::cout << "Remove task\n";

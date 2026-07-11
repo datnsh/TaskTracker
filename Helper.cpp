@@ -12,11 +12,23 @@ std::string Helper::GetDateTime() {
 	return dateTimeStr;
 }
 
+
 std::string Helper::JoinString(const std::vector<std::string>& words)
 {
 	std::ostringstream oss;
 	for (const auto& word : words) {
 		oss << word << " ";
 	}
-	return oss.str();
+	return str;
+}
+
+void Helper::TrimTrailingSpaces(std::string& str)
+{
+	size_t pos = str.find_last_not_of("\t\n\r\f\v");
+
+	if(pos == std::string::npos) {
+		str.clear();
+	} else {
+		str.erase(pos + 1);
+	}
 }

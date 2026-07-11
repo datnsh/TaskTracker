@@ -8,5 +8,6 @@ public:
 	static void StringToLower(std::string& c);
 	static std::string GetDateTime();
 	static std::string JoinString(const std::vector<std::string>& words);
+	static void TrimTrailingSpaces(std::string& str);
 };
 
