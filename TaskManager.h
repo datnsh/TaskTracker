@@ -4,17 +4,21 @@
 #include <map>
 #include <format>
 #include "Helper.h"
+#include <variant>
+
+using TaskValue = std::variant<int64_t,std::string, TaskStatus>;
 
 class TaskManager{
 public:
 	TaskManager();
 
-	template<typename T>
-	bool Update(int64_t& taskId, TaskProperty& property, T newValue);
+	bool Update(int64_t& taskId, TaskProperty& property, const TaskValue& newValue);
 	
 	void DeleteTask(int64_t& taskId);
 
 	void AddTask(std::vector<std::string>& arguments);
+
+	void ListTask();
 private:
 	std::map<int64_t, Task> taskList;
 	std::int64_t currentTaskId{};

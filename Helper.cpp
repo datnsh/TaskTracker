@@ -19,6 +19,7 @@ std::string Helper::JoinString(const std::vector<std::string>& words)
 	for (const auto& word : words) {
 		oss << word << " ";
 	}
+	std::string str = oss.str();
 	return str;
 }
 

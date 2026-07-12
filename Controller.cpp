@@ -8,13 +8,44 @@ void Controller::Execute(ParsedCommand& cmd) {
 		taskManager.AddTask(cmd.arguments);
 	}
 	else if (cmd.command == "update") {
-		command.
+		std::string taskIdStr = cmd.arguments[0];
+		std::int64_t taskId = std::stoll(taskIdStr);
+		std::string propertyStr = cmd.arguments[1];
+		TaskProperty taskProperty = TaskPropertyParser::ParseTaskProperty(propertyStr);
+		TaskValue newValue = this->ConvertValue(taskProperty, cmd.arguments[2]);
+		taskManager.Update(taskId, taskProperty, newValue);
 	}
-	else if (command.command == "remove") {
+	else if (cmd.command == "remove") {
 		std::cout << "Remove task\n";
+	}
+	else if (cmd.command == "list") {
+		taskManager.ListTask();
 	}
 	else {
 		std::cout << "Invalid command\n";
+	}
+}
+
+TaskValue Controller::ConvertValue(TaskProperty& property, const std::string& raw) {
+	switch (property) {
+	case TaskProperty::ID:
+		return std::stoll(raw);
+	case TaskProperty::DESCRIPTION:
+		return raw;
+	case TaskProperty::PRIORITY:
+		return std::stoi(raw);
+	case TaskProperty::STATUS:
+		if (raw == "TO_DO") {
+			return TaskStatus::TO_DO;
+		}
+		else if (raw == "IN_PROGRESS") {
+			return TaskStatus::IN_PROGRESS;
+		}
+		else if (raw == "DONE") {
+			return TaskStatus::DONE;
+		}
+	default:
+		throw std::invalid_argument("Invalid task property");
 	}
 }
 

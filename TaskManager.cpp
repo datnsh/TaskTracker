@@ -16,19 +16,18 @@ void TaskManager::AddTask(std::vector<std::string>& arguments)
 	this->taskList[newTask.taskId] = newTask;
 	std::cout << "Task added with Id: " <<  currentTaskId <<": " << taskList[currentTaskId].description << "\n";
 }
-template<typename T>
-bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, T newValue)
+bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, const TaskValue& newValue)
 {
 	if (taskId != -1) {
 		switch (property) {
 		case TaskProperty::DESCRIPTION:
-			taskList[taskId].description = newValue;
+			taskList[taskId].description = std::get<std::string>(newValue);
 			break;
 		case TaskProperty::PRIORITY:
 			//taskList[taskId].taskPriority = newValue;
 			break;
 		case TaskProperty::STATUS:
-			taskList[taskId].taskStatus = newValue;
+			taskList[taskId].taskStatus = std::get<TaskStatus>(newValue);
 			break;
 		default:
 			std::cout << "Invalid property\n";
@@ -37,6 +36,17 @@ bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, T newValu
 	}
 	else {
 		std::cout << "Invalid task Id\n";
+	}
+}
+void TaskManager::ListTask() {
+	std::cout << "Task List:\n";
+	for (const auto& [taskId, task] : taskList) {
+		std::cout << "Task Id: " << taskId << "\n";
+		std::cout << "Description: " << task.description << "\n";
+		std::cout << "Status: " << static_cast<int>(task.taskStatus) << "\n";
+		std::cout << "Created Date: " << task.createdDate << "\n";
+		std::cout << "Updated Date: " << task.updatedDate << "\n";
+		std::cout << "-------------------------\n";
 	}
 }
 
