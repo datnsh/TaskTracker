@@ -7,11 +7,11 @@
 #include <QString>
 #include <cstdint>
 #include <string>
-#include <TaskPropertyParser.h>
+#include <TaskParser.h>
 
 class Controller {
 public:
-	TaskValue ConvertValue(TaskProperty& property, const std::string& raw);
+	TaskValue ConvertValue(TaskProperty& property, std::string& raw);
 	Controller(TaskManager& taskManager, InputParser& inputParser);
 	void Execute(ParsedCommand& command);
 	void RunApp();

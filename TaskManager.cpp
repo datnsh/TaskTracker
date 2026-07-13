@@ -43,7 +43,7 @@ void TaskManager::ListTask() {
 	for (const auto& [taskId, task] : taskList) {
 		std::cout << "Task Id: " << taskId << "\n";
 		std::cout << "Description: " << task.description << "\n";
-		std::cout << "Status: " << static_cast<int>(task.taskStatus) << "\n";
+		std::cout << "Status: " << TaskParser::TaskStatusToString(task.taskStatus) << "\n";
 		std::cout << "Created Date: " << task.createdDate << "\n";
 		std::cout << "Updated Date: " << task.updatedDate << "\n";
 		std::cout << "-------------------------\n";
@@ -52,7 +52,7 @@ void TaskManager::ListTask() {
 
 void TaskManager::DeleteTask(int64_t& taskId)
 {
-	std::cout << "Deleting task with Id:" << taskId;
+	this->taskList.erase(taskId);
 
 	//Update the json file
 }

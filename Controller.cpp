@@ -11,7 +11,7 @@ void Controller::Execute(ParsedCommand& cmd) {
 		std::string taskIdStr = cmd.arguments[0];
 		std::int64_t taskId = std::stoll(taskIdStr);
 		std::string propertyStr = cmd.arguments[1];
-		TaskProperty taskProperty = TaskPropertyParser::ParseTaskProperty(propertyStr);
+		TaskProperty taskProperty = TaskParser::ParseTaskProperty(propertyStr);
 		TaskValue newValue = this->ConvertValue(taskProperty, cmd.arguments[2]);
 		taskManager.Update(taskId, taskProperty, newValue);
 	}
@@ -26,7 +26,7 @@ void Controller::Execute(ParsedCommand& cmd) {
 	}
 }
 
-TaskValue Controller::ConvertValue(TaskProperty& property, const std::string& raw) {
+TaskValue Controller::ConvertValue(TaskProperty& property, std::string& raw) {
 	switch (property) {
 	case TaskProperty::ID:
 		return std::stoll(raw);
@@ -35,15 +35,13 @@ TaskValue Controller::ConvertValue(TaskProperty& property, const std::string& ra
 	case TaskProperty::PRIORITY:
 		return std::stoi(raw);
 	case TaskProperty::STATUS:
-		if (raw == "TO_DO") {
-			return TaskStatus::TO_DO;
-		}
-		else if (raw == "IN_PROGRESS") {
+		if (raw == "in_progress") {
 			return TaskStatus::IN_PROGRESS;
 		}
-		else if (raw == "DONE") {
+		else if (raw == "done") {
 			return TaskStatus::DONE;
 		}
+		return TaskStatus::TO_DO;
 	default:
 		throw std::invalid_argument("Invalid task property");
 	}

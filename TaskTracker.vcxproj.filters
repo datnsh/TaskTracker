@@ -44,7 +44,7 @@
     <ClCompile Include="InputParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TaskPropertyParser.cpp">
+    <ClCompile Include="TaskParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,7 +76,7 @@
     <ClInclude Include="ParsedCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TaskPropertyParser.h">
+    <ClInclude Include="TaskParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
