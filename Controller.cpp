@@ -1,6 +1,7 @@
 #include "Controller.h"
 Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : taskManager(taskManager), parser(inputParser)
 {
+	std::cout << "Controller initialized\n";
 }
 
 void Controller::Execute(ParsedCommand& cmd) {
@@ -17,6 +18,8 @@ void Controller::Execute(ParsedCommand& cmd) {
 	}
 	else if (cmd.command == "remove") {
 		std::cout << "Remove task\n";
+		std::int64_t taskId = std::stoll(cmd.arguments[0]);
+		taskManager.DeleteTask(taskId);
 	}
 	else if (cmd.command == "list") {
 		taskManager.ListTask();

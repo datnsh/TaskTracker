@@ -16,7 +16,7 @@ void TaskManager::AddTask(std::vector<std::string>& arguments)
 	this->taskList[newTask.taskId] = newTask;
 	std::cout << "Task added with Id: " <<  currentTaskId <<": " << taskList[currentTaskId].description << "\n";
 }
-bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, const TaskValue& newValue)
+void TaskManager::Update(std::int64_t& taskId, TaskProperty& property, const TaskValue& newValue)
 {
 	if (taskId != -1) {
 		switch (property) {
@@ -31,7 +31,6 @@ bool TaskManager::Update(std::int64_t& taskId, TaskProperty& property, const Tas
 			break;
 		default:
 			std::cout << "Invalid property\n";
-			return false;
 		}
 	}
 	else {

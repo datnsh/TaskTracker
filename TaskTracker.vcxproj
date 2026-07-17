@@ -99,6 +99,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="DataParser.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputParser.cpp" />
     <ClCompile Include="main.cpp" />
@@ -109,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="DataParser.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputParser.h" />
     <ClInclude Include="ParsedCommand.h" />
