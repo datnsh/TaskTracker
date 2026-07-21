@@ -18,3 +18,13 @@ bool DataParser::CreateDataFile(const std::string& filePath) {
 	dataFile.close();
 	return true;
 }
+
+void DataParser::ParseDataFile(const std::string& data)
+{
+	std::cout << "Parsing data file: " << data << std::endl;
+}
+
+void DataParser::readDataFile(const std::string & filePath)
+{
+	std::cout << "Reading data file: " << filePath << std::endl;
+}

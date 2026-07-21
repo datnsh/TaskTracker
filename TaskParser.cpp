@@ -32,3 +32,15 @@ std::string TaskParser::TaskStatusToString(TaskStatus status) {
 		throw std::invalid_argument("Invalid task status");
 	}
 }
+
+TaskValue TaskParser::StringToTaskValue(TaskProperty& property,std::string& newValueStr)
+{
+	switch(property) {
+	case TaskProperty::ID: 
+	{
+		return std::stoll(newValueStr);
+	}
+	case TaskProperty::DESCRIPTION:
+		return newValueStr;
+	}
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <filesystem>
 class DataParser
 {
 	bool CreateDataFile(const std::string& filePath);

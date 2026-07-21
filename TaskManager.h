@@ -4,16 +4,15 @@
 #include <map>
 #include <format>
 #include "Helper.h"
-#include <variant>
 #include <TaskParser.h>
-
-using TaskValue = std::variant<int64_t,std::string, TaskStatus>;
+#include <variant>
+#include <TaskTypes.h>
 
 class TaskManager{
 public:
 	TaskManager();
 
-	void Update(int64_t& taskId, TaskProperty& property, const TaskValue& newValue);
+	void UpdateTask(std::string& taskIdStr, std::string& propertyStr, std::string& newValueStr);
 	
 	void DeleteTask(int64_t& taskId);
 

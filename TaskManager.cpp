@@ -16,18 +16,21 @@ void TaskManager::AddTask(std::vector<std::string>& arguments)
 	this->taskList[newTask.taskId] = newTask;
 	std::cout << "Task added with Id: " <<  currentTaskId <<": " << taskList[currentTaskId].description << "\n";
 }
-void TaskManager::Update(std::int64_t& taskId, TaskProperty& property, const TaskValue& newValue)
+void TaskManager::UpdateTask(std::string& taskIdStr, std::string& propertyStr, std::string& newValueStr)
 {
+	std::int64_t taskId = std::stoll(taskIdStr);
 	if (taskId != -1) {
+		TaskProperty property = TaskParser::ParseStringToTaskProperty(propertyStr);
 		switch (property) {
 		case TaskProperty::DESCRIPTION:
-			taskList[taskId].description = std::get<std::string>(newValue);
+			newValue = 
+			taskList[taskId].description = std::get<std::string>(newValueStr);
 			break;
 		case TaskProperty::PRIORITY:
-			//taskList[taskId].taskPriority = newValue;
+			taskList[taskId].taskPriority = newValueStr;
 			break;
 		case TaskProperty::STATUS:
-			taskList[taskId].taskStatus = std::get<TaskStatus>(newValue);
+			taskList[taskId].taskStatus = std::get<TaskStatus>(newValueStr);
 			break;
 		default:
 			std::cout << "Invalid property\n";

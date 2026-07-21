@@ -7,28 +7,36 @@ Controller::Controller(TaskManager& taskManager, InputParser& inputParser) : tas
 void Controller::Execute(ParsedCommand& cmd) {
 	switch (cmd.command)
 	{
-		case CommandType::Add:
-			taskManager.AddTask(cmd.arguments);
-			break;
-		case CommandType::Update:
-			std::string taskIdStr = cmd.arguments[0];
-			std::int64_t taskId = std::stoll(taskIdStr);
-			std::string propertyStr = cmd.arguments[1];
-			TaskProperty taskProperty = TaskParser::ParseTaskProperty(propertyStr);
-			TaskValue newValue = this->ConvertValue(taskProperty, cmd.arguments[2]);
-			taskManager.Update(taskId, taskProperty, newValue);
-			break;
-		case CommandType::Remove:
-			std::cout << "Remove task\n";
-			std::int64_t taskId = std::stoll(cmd.arguments[0]);
-			taskManager.DeleteTask(taskId);
-			break;
-		case CommandType::List:
-			taskManager.ListTask();
-			break;
-		default:
-			std::cout << "Invalid command\n";
-			return;
+	case CommandType::Add:
+	{
+		taskManager.AddTask(cmd.arguments);
+		break;
+	}
+	case CommandType::Update:
+	{
+		std::string taskIdStr = cmd.arguments[0];
+		std::string propertyStr = cmd.arguments[1];
+		std::string newValueStr = cmd.arguments[2];
+		taskManager.UpdateTask(taskIdStr, propertyStr, newValueStr);
+		break;
+	}
+	case CommandType::Remove:
+	{
+		std::cout << "Remove task\n";
+		std::int64_t taskId = std::stoll(cmd.arguments[0]);
+		taskManager.DeleteTask(taskId);
+		break;
+	}
+	case CommandType::List:
+	{
+		taskManager.ListTask();
+		break;
+	}
+	default:
+	{
+		std::cout << "Invalid command\n";
+		return;
+	}
 	};
 }
 
