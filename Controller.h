@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <string>
 #include <TaskParser.h>
+#include <CommandType.h>
 
 class Controller {
 public:

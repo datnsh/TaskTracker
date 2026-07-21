@@ -109,17 +109,20 @@
     <ClCompile Include="UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommandType.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="DataParser.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputParser.h" />
     <ClInclude Include="ParsedCommand.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="TaskParser.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TaskTracker.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,6 +1,6 @@
 #include "TaskParser.h"
 
-TaskProperty TaskParser::ParseTaskProperty(const std::string& propertyStr) {
+TaskProperty TaskParser::ParseStringToTaskProperty(const std::string& propertyStr) {
 	std::string property = propertyStr;
 	Helper::StringToLower(property);
 	if (property == "id") {

@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <CommandType.h>
 struct ParsedCommand
 {
-	std::string command;
+	CommandType command;
 	std::vector<std::string> arguments;
 	
 };
