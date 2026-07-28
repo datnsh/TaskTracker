@@ -9,8 +9,6 @@ class TaskParser
 public:
 	static TaskProperty ParseStringToTaskProperty(const std::string& propertyStr);
 
-	static std::string TaskStatusToString(TaskStatus& property);
-
 	static TaskValue StringToTaskValue(TaskProperty& property,std::string& rawStr);
 };
 

@@ -20,19 +20,6 @@ TaskProperty TaskParser::ParseStringToTaskProperty(const std::string& propertySt
 	}
 }
 
-std::string TaskParser::TaskStatusToString(TaskStatus status) {
-	switch (status) {
-	case TaskStatus::TO_DO:
-		return "To do";
-	case TaskStatus::IN_PROGRESS:
-		return "In progress";
-	case TaskStatus::DONE:
-		return "Done";
-	default:
-		throw std::invalid_argument("Invalid task status");
-	}
-}
-
 TaskValue TaskParser::StringToTaskValue(TaskProperty& property,std::string& newValueStr)
 {
 	switch(property) {

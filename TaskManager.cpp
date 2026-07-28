@@ -23,14 +23,10 @@ void TaskManager::UpdateTask(std::string& taskIdStr, std::string& propertyStr, s
 		TaskProperty property = TaskParser::ParseStringToTaskProperty(propertyStr);
 		switch (property) {
 		case TaskProperty::DESCRIPTION:
-			newValue = 
-			taskList[taskId].description = std::get<std::string>(newValueStr);
 			break;
 		case TaskProperty::PRIORITY:
-			taskList[taskId].taskPriority = newValueStr;
 			break;
 		case TaskProperty::STATUS:
-			taskList[taskId].taskStatus = std::get<TaskStatus>(newValueStr);
 			break;
 		default:
 			std::cout << "Invalid property\n";
@@ -45,7 +41,7 @@ void TaskManager::ListTask() {
 	for (const auto& [taskId, task] : taskList) {
 		std::cout << "Task Id: " << taskId << "\n";
 		std::cout << "Description: " << task.description << "\n";
-		std::cout << "Status: " << TaskParser::TaskStatusToString(task.taskStatus) << "\n";
+		std::cout << "Status: "<< "\n";
 		std::cout << "Created Date: " << task.createdDate << "\n";
 		std::cout << "Updated Date: " << task.updatedDate << "\n";
 		std::cout << "-------------------------\n";
